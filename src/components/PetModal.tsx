@@ -64,7 +64,7 @@ export default function PetModal({ pet, onClose }: PetModalProps) {
         className="flex max-h-[92vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative aspect-[16/10] w-full shrink-0 bg-slate-100">
+        <div className="relative h-56 w-full shrink-0 overflow-hidden bg-slate-100 sm:h-64">
           <PetImageFallback
             src={pet.image_url}
             alt={getSafePetName(pet)}
