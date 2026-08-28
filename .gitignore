@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+pets.db
+*.log
+npm-debug.log*
+.DS_Store
+.env*.local
+.vercel
+next-env.d.ts
+coverage/
