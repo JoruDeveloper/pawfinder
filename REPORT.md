@@ -200,6 +200,29 @@ npx --yes gh-pages -d out --dotfiles -b gh-pages
 
 ---
 
+## 8.1 Limitaciones Conocidas (Modo Estático)
+
+Al ser una **exportación estática** (`output: 'export'`) sin backend ni servidor, el portal presenta dos limitaciones operativas que es importante documentar:
+
+### A. Los avisos agregados NO se persisten
+- El botón **"Publicar Aviso"** abre `ReportPetModal` y, al enviarlo, la mascota aparece al instante en la grilla (se agrega al estado de React en `page.tsx`).
+- **Sin embargo**, ese registro vive únicamente **en memoria del navegador**. No se escribe en `pets.db` ni en `pets.json`.
+- **Consecuencia**: al recargar la página, los avisos agregados por el usuario **desaparecen**. El sitio desplegado en GitHub Pages no puede guardar datos de forma permanente por sí solo.
+- **Opciones de mejora (fuera de alcance actual)**:
+  - Persistencia local con `localStorage` para sobrevivir recargas.
+  - Backend real (API/servidor) o escritura vía GitHub API para volcar los avisos al repo.
+  - Servicio externo (ej. Supabase, Firebase) como base de datos en runtime.
+
+### B. Los datos provienen de una instantánea en tiempo de build
+- Toda la información mostrada se origina en `src/data/pets.json`, generado por `db:seed` durante el build a partir de `pets.db`.
+- `page.tsx` importa ese JSON en tiempo de compilación, de modo que el sitio estático contiene los **16 registros** como una instantánea congelada.
+- **Consecuencia**: no hay consulta a la base de datos en runtime (no existe servidor). Cualquier cambio en `pets.db` (nuevos registros, ediciones) **solo se refleja en producción tras un rebuild + redeploy** (`git push` a `main` → workflow de CI/CD).
+- Esto garantiza resiliencia y velocidad, pero implica que el contenido no es dinámico en caliente.
+
+> **Resumen para el usuario final:** Sí se puede "publicar un aviso" en la interfaz y sí se muestran todos los datos de la pseudo-BD, pero el aviso es temporal (memoria) y los datos son una copia de build, no una conexión en vivo a la base de datos.
+
+---
+
 ## 9. Verificación Final
 
 - ✅ `npm run test` → **36/36 passed**
