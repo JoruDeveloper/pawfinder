@@ -19,6 +19,6 @@ Verificar y certificar la robustez del sistema frente a datos degradados, valore
 
 ## 📋 Checklist de QA
 - [x] Configuración del entorno de testing (Vitest + React Testing Library + jsdom).
-- [x] Suite de pruebas unitarias implementada y ejecutada (26/26 tests aprobados).
+- [x] Suite de pruebas unitarias implementada y ejecutada (36/36 tests aprobados: 14 de helpers + 3 PetCard + 3 StatsBanner + 3 FilterBar + 3 PetModal).
 - [x] Auditoría de null-safety en todos los componentes completada con 100% de éxito.
 - [x] Diagnóstico de warnings y errores de consola superado sin incidencias.

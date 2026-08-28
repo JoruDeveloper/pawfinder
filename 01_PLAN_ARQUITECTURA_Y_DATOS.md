@@ -42,6 +42,6 @@ CREATE TABLE IF NOT EXISTS pets (
 
 ## 📋 Checklist de Ejecución
 - [x] Especificación de arquitectura y esquema SQLite definida.
-- [x] Script de inicialización y siembra `scripts/seed-and-export.js` con 14 registros diversos (casos con nulos, fotos ausentes, distintos estados).
+- [x] Script de inicialización y siembra `scripts/seed-and-export.js` con 16 registros diversos (casos con nulos, fotos ausentes, distintos estados).
 - [x] Archivo `src/data/pets.json` generado automáticamente y sincronizado con `pets.db`.
 - [x] Adaptador de datos con tipado TypeScript en `src/types/pet.ts` y helpers en `src/lib/pet-helpers.ts`.
