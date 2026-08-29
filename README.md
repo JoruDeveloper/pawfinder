@@ -1,3 +1,5 @@
+Guillermo Cedeño
+
 # 🐾 PawFinder — Portal de Búsqueda, Rescate y Adopción de Mascotas
 
 > **Entregable del Proyecto Final — Curso de Desarrollo con Inteligencia Artificial**
